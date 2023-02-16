@@ -2,8 +2,10 @@
 #include <string>
 
 const int SCREEN_HEIGHT = 750;
-const int SCREEN_WIDTH = 1280;
+const int SCREEN_WIDTH = 1300;
 const std::string WINDOW_TITLE = "Boids - Flocking Behaviour Simulation";
+
+const int INITIAL_BOIDS = 40;
 
 const int LEFT_MARGIN = 100;
 const int RIGHT_MARGIN = SCREEN_WIDTH - LEFT_MARGIN;

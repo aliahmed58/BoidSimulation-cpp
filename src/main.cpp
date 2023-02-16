@@ -19,7 +19,7 @@ int main(int argc, char* args[]) {
 
 	std::vector<Boid*> boids;
 	
-	for (int i = 0; i < 100; i ++) {
+	for (int i = 0; i < INITIAL_BOIDS; i ++) {
 		Boid* boid = new Boid();
 		float x = (float) random_pos(SCREEN_WIDTH, 0);
 		float y = (float) random_pos(SCREEN_HEIGHT, 0);
@@ -53,6 +53,10 @@ int main(int argc, char* args[]) {
 		// render above entities
 		SDL_RenderPresent(renderer);
 	}
+
+	/* deallocating memory used by boids */
+	for (int i = 0; i < boids.size(); i ++) delete boids.at(i);
+	boids.clear();
 
 	delete system;
 	return 0;
