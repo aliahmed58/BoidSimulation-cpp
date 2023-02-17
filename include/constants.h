@@ -22,6 +22,4 @@ const float ALIGNMENT_FACTOR = 0.09;
 const float COHESION_FACTOR = 0.0005;
 const float SEPERATION_FACTOR = 0.05;
 
-bool seperation_bool = false;
-bool cohesion_bool = false;
-bool alignment_bool = false;
+const bool alignment_on = false;

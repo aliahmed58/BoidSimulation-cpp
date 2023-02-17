@@ -1,6 +1,7 @@
 #pragma once
 #include "texture.h"
 #include "constants.h"
+#include "controls.h"
 #include <vector>
 #include <bits/stdc++.h>
 #include <cmath>
@@ -13,13 +14,13 @@ public:
     ~Boid();
 
     void render();
-    void update(double deltaTime, std::vector<Boid*> boids, bool alignment_bool, bool cohesion_bool, bool seperation_bool);
+    void update(double deltaTime, std::vector<Boid*> boids, controls& ctrls);
      
     bool operator==(const Boid &boid);
 
 private:
 
-    void apply_rules(std::vector<Boid*> boids, bool alignment_bool, bool cohesion_bool, bool seperation_bool);
+    void apply_rules(std::vector<Boid*> boids, controls& ctrls);
     void seperation(float delta_x, float delta_y);
     void alignment(float vx_avg, float vy_avg, int n_boids);
     void cohesion(float x_avg, float y_avg, int n_boids);

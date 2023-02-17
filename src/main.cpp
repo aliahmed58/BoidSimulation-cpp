@@ -10,12 +10,19 @@ int random_pos(int max, int min) {
 	return num;
 }
 
+void spawn_boid(std::vector<Boid*> &boids, SDL_Renderer* renderer) {
+	int x, y;
+	SDL_GetMouseState(&x, &y);
+	boids.insert(boids.begin(), new Boid(x,y, renderer));
+	
+}
+
 int main(int argc, char* args[]) {
 
 	Renderer* system = new Renderer();
 	SDL_Renderer* renderer = system->getRenderer();
 
-	Menu* menu = new Menu();
+	Menu* menu = new Menu(renderer);
 
 	double deltaTime = system->getDeltaTime();
 
@@ -23,7 +30,7 @@ int main(int argc, char* args[]) {
 
 	std::vector<Boid*> boids;
 	
-	for (int i = 0; i < 100; i ++) {
+	for (int i = 0; i < 1; i ++) {
 		Boid* boid = new Boid();
 		float x = (float) random_pos(SCREEN_WIDTH, 0);
 		float y = (float) random_pos(SCREEN_HEIGHT, 0);
@@ -45,6 +52,8 @@ int main(int argc, char* args[]) {
 
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				menu->handle_updates(e);
+				spawn_boid(boids, renderer);
+				
 			}
 		}
 
@@ -57,13 +66,14 @@ int main(int argc, char* args[]) {
 
 		for (int i = 0; i < boids.size(); i ++) {
 			boids.at(i)->render();
-			boids.at(i)->update(deltaTime, boids, true, true, true);
+			boids.at(i)->update(deltaTime, boids, menu->get_controls());
 		}
 
 		// render above entities
 		SDL_RenderPresent(renderer);
 	}
 
+	delete menu;
 	delete system;
 	return 0;
 

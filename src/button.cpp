@@ -16,9 +16,9 @@ void Button::render(SDL_Renderer* renderer, int r, int g, int b) {
     SDL_RenderFillRect(renderer, &this->rect);
 }
 
-void Button::hover(SDL_Renderer* renderer) {
+void Button::hover(SDL_Renderer* renderer, int r, int g, int b) {
     if (this->on_mouse()) {
-        this->render(renderer, 200, 0, 0);
+        this->render(renderer, r, g, b);
     }
 }
 
