@@ -23,5 +23,3 @@ const int VISUAL_RANGE = 90;
 const float ALIGNMENT_FACTOR = 0.09;
 const float COHESION_FACTOR = 0.0005;
 const float SEPERATION_FACTOR = 0.05;
-
-const bool alignment_on = false;

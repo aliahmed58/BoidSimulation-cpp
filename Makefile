@@ -14,4 +14,4 @@ windows:
 	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIB_PATHS)  $(LINKER_FLAGS) -o ./bin/main && start ./bin/main
 
 linux:
-	$(CC) $(CXXFLAGS) $(OBJS) $(LIB_PATHS) $(INCLUDE_PATHS) $(LINKER_FLAGS) -o main && start ./bin/main.exe
+	mkdir -p bin && $(CC) $(CXXFLAGS) $(OBJS) -I include/ $(LINKER_FLAGS) -o ./bin/main && start ./bin/main
