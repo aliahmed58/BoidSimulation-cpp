@@ -38,7 +38,9 @@ Create a ```bin``` folder in root directory of project and add the ```DLLs``` fo
 
 Finally compile and run by running the command:
 
-```make windows```
+```
+make windows
+```
 
 The compiled binary is in the ```./bin``` folder. 
 
@@ -46,6 +48,8 @@ The compiled binary is in the ```./bin``` folder.
 
 Install the dev packages for ```SDL2, SDL2_image, SDL2_ttf``` for your distro and run the following command:
 
-```make linux```
+```
+make linux
+```
 
 Copy the ```./res``` to ```./bin``` folder for the compiled binary to run.
