@@ -2,14 +2,14 @@ CC = g++
 
 OBJS = src/*.cpp
 
-INCLUDE_PATHS = -IC:\libs\SDL2-2.26.3\i686-w64-mingw32\include\SDL2 -I C:\libs\SDL2_ttf-2.20.2\i686-w64-mingw32\include\SDL2 -I C:\libs\SDL2_image-2.6.3\i686-w64-mingw32\include\SDL2 -Iinclude/
+INCLUDE_PATHS = -I C:/SDL2-2.26.3/i686-w64-mingw32/include/SDL2/ -I C:/SDL2_ttf-2.20.2/i686-w64-mingw32/include/SDL2 -I C:/SDL2_image-2.6.3/i686-w64-mingw32/include/SDL2/ -Iinclude/
 
-LIB_PATHS = -L C:\libs\SDL2-2.26.3\i686-w64-mingw32\lib -L C:\libs\SDL2_ttf-2.20.2\i686-w64-mingw32\lib -L C:\libs\SDL2_image-2.6.3\i686-w64-mingw32\lib
+LIB_PATHS = -L C:/SDL2-2.26.3/i686-w64-mingw32/lib/ -L C:/SDL2_ttf-2.20.2/i686-w64-mingw32/lib/ -L C:/SDL2_image-2.6.3/i686-w64-mingw32/lib/
 
 LINKER_FLAGS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf
 
 windows:
-	$(CC) $(OBJS) $(LIB_PATHS) $(INCLUDE_PATHS) $(LINKER_FLAGS) -o ./bin/main && start ./bin/main
+	$(CC) $(OBJS) $(INCLUDE_PATHS) $(LIB_PATHS)  $(LINKER_FLAGS) -o ./bin/main && start ./bin/main
 
 linux:
 	$(CC) $(OBJS) $(LIB_PATHS) $(INCLUDE_PATHS) $(LINKER_FLAGS) -o main && start ./bin/main.exe

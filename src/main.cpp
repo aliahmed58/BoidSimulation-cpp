@@ -2,16 +2,20 @@
 #include <vector>
 #include "../include/renderer.h"
 #include "../include/boid.h"
+#include "../include/menu.h"
 
 int random_pos(int max, int min) {
 	int range = max - min + 1;
 	int num = rand() % range + min;
+	return num;
 }
 
 int main(int argc, char* args[]) {
 
 	Renderer* system = new Renderer();
 	SDL_Renderer* renderer = system->getRenderer();
+
+	Menu* menu = new Menu();
 
 	double deltaTime = system->getDeltaTime();
 
@@ -38,6 +42,10 @@ int main(int argc, char* args[]) {
 			if (e.type == SDL_QUIT) {
 				quit = true;
 			}
+
+			if (e.type == SDL_MOUSEBUTTONDOWN) {
+				menu->handle_updates(e);
+			}
 		}
 
 		// set renderer color
@@ -45,9 +53,11 @@ int main(int argc, char* args[]) {
 		// clear renderer to draw on screen
 		SDL_RenderClear(renderer);
 
+		menu->render(renderer);
+
 		for (int i = 0; i < boids.size(); i ++) {
 			boids.at(i)->render();
-			boids.at(i)->update(deltaTime, boids);
+			boids.at(i)->update(deltaTime, boids, true, true, true);
 		}
 
 		// render above entities

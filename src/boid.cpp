@@ -37,11 +37,11 @@ void Boid::calc_angle() {
     angle += 90;
 }
 
-void Boid::update(double deltaTime, std::vector<Boid*> boids) {
+void Boid::update(double deltaTime, std::vector<Boid*> boids, bool alignment_bool, bool cohesion_bool, bool seperation_bool) {
 
     this->calc_angle();
 
-    this->apply_rules(boids);
+    this->apply_rules(boids, alignment_bool, cohesion_bool, seperation_bool);
 
     this->limit_speed(deltaTime);
 
@@ -75,7 +75,7 @@ void Boid::limit_speed(double deltaTime) {
     }
 }
 
-void Boid::apply_rules(std::vector<Boid*> boids) {
+void Boid::apply_rules(std::vector<Boid*> boids, bool alignment_bool, bool cohesion_bool, bool seperation_bool) {
 
     float delta_x = 0, delta_y = 0;
     float vx_avg = 0, vy_avg = 0;
@@ -108,11 +108,14 @@ void Boid::apply_rules(std::vector<Boid*> boids) {
     }
 
     if (n_boids > 0 ) {
-        this->alignment(vx_avg, vy_avg, n_boids);
-        this->cohesion(x_avg, y_avg, n_boids);
+        if (alignment_bool) 
+            this->alignment(vx_avg, vy_avg, n_boids);
+        
+        if (cohesion_bool)
+            this->cohesion(x_avg, y_avg, n_boids);
     }
-
-    this->seperation(delta_x, delta_y);
+    if (seperation_bool)
+        this->seperation(delta_x, delta_y);
 }
 
 void Boid::seperation(float delta_x, float delta_y) {
