@@ -37,11 +37,11 @@ void Boid::calc_angle() {
     angle += 90;
 }
 
-void Boid::update(double deltaTime, std::vector<Boid*> boids) {
+void Boid::update(double deltaTime, std::vector<Boid*> boids, controls& ctrls) {
 
     this->calc_angle();
 
-    this->apply_rules(boids);
+    this->apply_rules(boids, ctrls);
 
     this->limit_speed(deltaTime);
 
@@ -75,7 +75,7 @@ void Boid::limit_speed(double deltaTime) {
     }
 }
 
-void Boid::apply_rules(std::vector<Boid*> boids) {
+void Boid::apply_rules(std::vector<Boid*> boids, controls& ctrls) {
 
     float delta_x = 0, delta_y = 0;
     float vx_avg = 0, vy_avg = 0;
@@ -108,11 +108,14 @@ void Boid::apply_rules(std::vector<Boid*> boids) {
     }
 
     if (n_boids > 0 ) {
-        this->alignment(vx_avg, vy_avg, n_boids);
-        this->cohesion(x_avg, y_avg, n_boids);
+        if (ctrls.alignment) 
+            this->alignment(vx_avg, vy_avg, n_boids);
+        
+        if (ctrls.cohesion)
+            this->cohesion(x_avg, y_avg, n_boids);
     }
-
-    this->seperation(delta_x, delta_y);
+    if (ctrls.seperation)
+        this->seperation(delta_x, delta_y);
 }
 
 void Boid::seperation(float delta_x, float delta_y) {
