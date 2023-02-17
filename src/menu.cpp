@@ -19,35 +19,31 @@ Menu::~Menu() {
 
 void Menu::render(SDL_Renderer* renderer) {
 
-    
-
     if (ctrls.alignment) {
         this->alignment.render(renderer, 0, 200, 0);
-        this->alignment.hover(renderer, 200, 0, 0);
     }
     else { 
         this->alignment.render(renderer, 200, 0, 0);
-        this->alignment.hover(renderer, 0, 200, 0);
     }
     
     if (ctrls.seperation) {
         this->separation.render(renderer, 0, 200, 0);
-        this->separation.hover(renderer, 200, 0, 0);
     }
     else {
         this->separation.render(renderer, 200, 0, 0);
-        this->separation.hover(renderer, 0, 200, 0);
     }
     
     if (ctrls.cohesion) {
         this->cohesion.render(renderer, 0, 200, 0);
-        this->cohesion.hover(renderer, 200, 0, 0);
     }
     else {
         this->cohesion.render(renderer, 200, 0, 0);
-        this->cohesion.hover(renderer, 0, 200, 0);
     }
 
+    this->separation.hover(renderer, 24, 24, 35);
+    this->cohesion.hover(renderer, 24, 24, 35);
+    this->alignment.hover(renderer, 24, 24, 35);
+    
     SDL_Color white = {255,255,255};
     this->font->render(alignment.x + 15, alignment.y + 4, alignment.text, white);
     this->font->render(separation.x + 15, separation.y + 4, separation.text, white);

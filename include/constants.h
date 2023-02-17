@@ -9,7 +9,7 @@ const int INITIAL_BOIDS = 40;
 
 const int LEFT_MARGIN = 100;
 const int RIGHT_MARGIN = SCREEN_WIDTH - LEFT_MARGIN;
-const int TOP_MARGIN = 100;
+const int TOP_MARGIN = 150;
 const int BOTTOM_MARGIN = SCREEN_HEIGHT - TOP_MARGIN;
 
 const int MIN_SPEED = 3;

@@ -19,9 +19,11 @@ void spawn_boid(std::vector<Boid*> &boids, SDL_Renderer* renderer) {
 
 int main(int argc, char* args[]) {
 
+
 	Renderer* system = new Renderer();
 	SDL_Renderer* renderer = system->getRenderer();
 
+	Texture* bg = new Texture("./res/bg.png", renderer);
 	Menu* menu = new Menu(renderer);
 
 	double deltaTime = system->getDeltaTime();
@@ -52,7 +54,10 @@ int main(int argc, char* args[]) {
 
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
 				menu->handle_updates(e);
-				spawn_boid(boids, renderer);
+				
+				if (e.button.y > 50) {
+					spawn_boid(boids, renderer);
+				}
 				
 			}
 		}
@@ -61,6 +66,11 @@ int main(int argc, char* args[]) {
 		SDL_SetRenderDrawColor(renderer, 135, 206, 235, 255);
 		// clear renderer to draw on screen
 		SDL_RenderClear(renderer);
+
+		SDL_Rect src = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+		SDL_Rect dst = {0, 0, SCREEN_WIDTH, SCREEN_HEIGHT};
+		SDL_SetTextureAlphaMod(bg->getTexture(), 10);
+		bg->render(&src, &dst);
 
 		menu->render(renderer);
 
@@ -78,6 +88,7 @@ int main(int argc, char* args[]) {
 	boids.clear();
 
 	delete menu;
+	delete bg;
 	delete system;
 	return 0;
 
