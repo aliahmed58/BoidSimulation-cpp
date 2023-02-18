@@ -16,6 +16,7 @@ Menu::Menu(SDL_Renderer* renderer) {
     this->alignment_text = new Texture("./res/alignment.png", renderer);
     this->cohesion_text = new Texture("./res/cohesion.png", renderer);
     this->kill_text = new Texture("./res/kill.png", renderer);
+    this->ins = new Texture("./res/ins.png", renderer);
 
     this->font = new Font("./res/font.ttf", renderer, 25);
 }
@@ -26,6 +27,7 @@ Menu::~Menu() {
     this->alignment_text->free();
     this->cohesion_text->free();
     this->kill_text->free();
+    this->ins->free();
 }
 
 void Menu::render(SDL_Renderer* renderer) {
@@ -73,11 +75,14 @@ void Menu::render(SDL_Renderer* renderer) {
     SDL_Rect dst3 = {kill_boid.x, kill_boid.y, kill_text->getWidth(), kill_text->getHeight()};
     kill_text->render(&src3, &dst3);
 
+    SDL_Rect src4 = {0, 0, ins->getWidth(), ins->getHeight()};
+    SDL_Rect dst4 = {(SCREEN_WIDTH / 2) - 200, 18, ins->getWidth(), ins->getHeight()};
+    ins->render(&src4, &dst4);
+
     SDL_Color black = {0, 0, 0};
     std::string n_boids = "Total boids: " + std::to_string(ctrls.boid_count);
     this->font->render(SCREEN_WIDTH - 220, 10, n_boids, black);
 
-    this->font->render((SCREEN_WIDTH / 2) - 200, 10, "Click anywhere to add a boid", black);
     
 }
 

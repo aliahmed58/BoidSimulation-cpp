@@ -29,4 +29,5 @@ private:
     Texture* kill_text;
     Texture* alignment_text;
     Texture* cohesion_text;
+    Texture* ins;
 };
