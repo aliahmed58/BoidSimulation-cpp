@@ -1,6 +1,6 @@
 # Boids - Flocking Behaviour Simulation
 
-![cover image](cover.png "Cover")
+![cover image](cover.gif "Cover")
 
 ## Introduction
 An artifical life simulation originally developed by Craig Reynolds. The simulation aims to explain the behaviour of flocking birds. This simulation explains if how a single boid (bird) follows some certain rules, leads to a flocking behaviour among multiple boids.
