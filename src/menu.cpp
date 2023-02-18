@@ -76,6 +76,8 @@ void Menu::render(SDL_Renderer* renderer) {
     SDL_Color black = {0, 0, 0};
     std::string n_boids = "Total boids: " + std::to_string(ctrls.boid_count);
     this->font->render(SCREEN_WIDTH - 220, 10, n_boids, black);
+
+    this->font->render((SCREEN_WIDTH / 2) - 200, 10, "Click anywhere to add a boid", black);
     
 }
 
