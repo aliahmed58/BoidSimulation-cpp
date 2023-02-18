@@ -53,10 +53,11 @@ int main(int argc, char* args[]) {
 			}
 
 			if (e.type == SDL_MOUSEBUTTONDOWN) {
-				menu->handle_updates(e);
+				menu->handle_updates(e, boids);
 				
 				if (e.button.y > 50) {
 					spawn_boid(boids, renderer);
+					menu->get_controls().boid_count ++;
 				}
 				
 			}
