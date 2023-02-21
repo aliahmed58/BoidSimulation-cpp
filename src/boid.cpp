@@ -113,7 +113,7 @@ void Boid::apply_rules(std::vector<Boid*> boids, controls& ctrls) {
     int n_boids = 0;
 
     /* loop over every boid in the vector */
-    for (int i = 0; i < boids.size(); i ++) {
+    for (long unsigned int i = 0; i < boids.size(); i ++) {
         
         /* if the boid is being compared to itself, skip */
         if (this == boids.at(i)) continue;

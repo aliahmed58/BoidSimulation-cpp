@@ -44,7 +44,6 @@ int main(int argc, char* args[]) {
 	
 	/* add boids before the start of main loop based on the INITIAL_BOID count in constants.h file */
 	for (int i = 0; i < INITIAL_BOIDS; i ++) {
-		Boid* boid = new Boid();
 		float x = (float) random_pos(SCREEN_WIDTH, 0);
 		float y = (float) random_pos(SCREEN_HEIGHT, 0);
 		boids.insert(boids.begin(), new Boid(x, y, renderer));
@@ -100,7 +99,7 @@ int main(int argc, char* args[]) {
 		menu->render(renderer);
 
 		/* render all boids and call update method on them */
-		for (int i = 0; i < boids.size(); i ++) {
+		for (long unsigned int i = 0; i < boids.size(); i ++) {
 			boids.at(i)->render();
 			boids.at(i)->update(deltaTime, boids, menu->get_controls());
 		}
@@ -110,7 +109,7 @@ int main(int argc, char* args[]) {
 	}
 
 	/* deallocating memory used by boids */
-	for (int i = 0; i < boids.size(); i ++) delete boids.at(i);
+	for (long unsigned int i = 0; i < boids.size(); i ++) delete boids.at(i);
 
 	/* clear the boids vector */
 	boids.clear();
