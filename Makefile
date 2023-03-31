@@ -2,7 +2,7 @@ CC = g++
 
 OBJS = src/*.cpp
 
-CXXFLAGS=-g -std=gnu++0x -Wall -pedantic
+CXXFLAGS=-g -std=c++14 -Wall -pedantic
 
 INCLUDE_PATHS = -I C:/libs/SDL2-2.26.3/i686-w64-mingw32/include/ -I C:/libs/SDL2-2.26.3/i686-w64-mingw32/include/SDL2 -I C:/libs/SDL2_ttf-2.20.2/i686-w64-mingw32/include -I C:/libs/SDL2_image-2.6.3/i686-w64-mingw32/include -Iinclude/
 

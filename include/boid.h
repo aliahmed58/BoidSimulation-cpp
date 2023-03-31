@@ -3,7 +3,6 @@
 #include "constants.h"
 #include "controls.h"
 #include <vector>
-#include <bits/stdc++.h>
 #include <cmath>
 
 /* Class for an individual boid */
