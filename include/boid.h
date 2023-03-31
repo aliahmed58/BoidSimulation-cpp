@@ -14,7 +14,7 @@ public:
     Boid();
 
     /* ctor with x, y coordinates and SDL_Renderer pointer */
-    Boid(float x, float y, SDL_Renderer* renderer);
+    Boid(float x, float y, SDL_Renderer* renderer, Texture* texture);
 
     /* destructor */
     ~Boid();

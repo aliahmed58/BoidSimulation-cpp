@@ -12,10 +12,10 @@ int random_pos(int max, int min) {
 }
 
 /* spawns boid on the screen and adds them to the vector */
-void spawn_boid(std::vector<Boid*> &boids, SDL_Renderer* renderer) {
+void spawn_boid(std::vector<Boid*> &boids, SDL_Renderer* renderer, Texture* boid_texture) {
 	int x, y;
 	SDL_GetMouseState(&x, &y);
-	boids.insert(boids.begin(), new Boid(x,y, renderer));
+	boids.insert(boids.begin(), new Boid(x,y, renderer, boid_texture));
 	
 }
 
@@ -29,6 +29,9 @@ int main(int argc, char* args[]) {
 
 	/* create a background texture */
 	Texture* bg = new Texture("./res/bg.png", renderer);
+
+	/* Load the boid texture once and use it over and over again to gain perfomance */
+	Texture* boid_texture = new Texture("./res/boid.png", renderer);
 
 	/* create a menu object */
 	Menu* menu = new Menu(renderer);
@@ -46,7 +49,7 @@ int main(int argc, char* args[]) {
 	for (int i = 0; i < INITIAL_BOIDS; i ++) {
 		float x = (float) random_pos(SCREEN_WIDTH, 0);
 		float y = (float) random_pos(SCREEN_HEIGHT, 0);
-		boids.insert(boids.begin(), new Boid(x, y, renderer));
+		boids.insert(boids.begin(), new Boid(x, y, renderer, boid_texture));
 	}
 
 	/* SDL_Event e for taking keyboard and mouse events */
@@ -75,7 +78,7 @@ int main(int argc, char* args[]) {
 				
 				/* if the button click is below the menu controls, spawn a new boid */
 				if (e.button.y > 50) {
-					spawn_boid(boids, renderer);
+					spawn_boid(boids, renderer, boid_texture);
 
 					/* increment the no. of boids */
 					menu->get_controls().boid_count ++;

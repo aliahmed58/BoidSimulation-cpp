@@ -8,7 +8,7 @@ const int SCREEN_WIDTH = 1300;
 const std::string WINDOW_TITLE = "Boids - Flocking Behaviour Simulation";
 
 /* No. of initial boids spawned when program runs */
-const int INITIAL_BOIDS = 20;
+const int INITIAL_BOIDS = 100;
 
 /* Margins at which the boids will start steering - take a smooth turn */
 const int LEFT_MARGIN = 100;

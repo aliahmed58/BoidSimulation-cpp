@@ -9,9 +9,9 @@ float randomFloat() {
 Boid::Boid() {}
 
 /* initializes the boid with x,y and its texture and assigns random velocities (x, y) */
-Boid::Boid(float x, float y, SDL_Renderer* renderer) {
+Boid::Boid(float x, float y, SDL_Renderer* renderer, Texture* texture) {
     this->renderer = renderer;
-    this->texutre = new Texture("./res/boid.png", renderer);
+    this->texutre = texture;
     this->x = x;
     this->y = y;
     vx = (randomFloat() - 0.5) * MIN_SPEED;
